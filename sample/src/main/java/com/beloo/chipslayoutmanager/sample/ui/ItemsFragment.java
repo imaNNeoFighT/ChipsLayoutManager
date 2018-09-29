@@ -96,7 +96,9 @@ public class ItemsFragment extends Fragment {
 
         ChipsLayoutManager spanLayoutManager = ChipsLayoutManager.newBuilder(getContext())
                 .setOrientation(ChipsLayoutManager.HORIZONTAL)
+                //.setIsRtl(true)
                 .build();
+
 
         rvTest.addItemDecoration(new SpacingItemDecoration(getResources().getDimensionPixelOffset(R.dimen.item_space),
                 getResources().getDimensionPixelOffset(R.dimen.item_space)));

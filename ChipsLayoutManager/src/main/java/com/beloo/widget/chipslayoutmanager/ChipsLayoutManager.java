@@ -150,6 +150,16 @@ public class ChipsLayoutManager extends RecyclerView.LayoutManager implements IC
     private boolean isLayoutRTL = false;
 
     /**
+    * if manual set isLayoutRtlManual
+    */
+    private boolean isLayoutRtlSetManual = false;
+
+    /**
+     * manual set of layout direction (rtl or ltr)
+     */
+    private boolean isLayoutRtlManual = false;
+
+    /**
      * current device layoutOrientation
      */
     @DeviceOrientation
@@ -396,6 +406,11 @@ public class ChipsLayoutManager extends RecyclerView.LayoutManager implements IC
             return this;
         }
 
+        public Builder setIsRtl(boolean isRtl) {
+            ChipsLayoutManager.this.setIsLayoutRTL(isRtl);
+            return this;
+        }
+
         /**
          * create SpanLayoutManager
          */
@@ -620,7 +635,15 @@ public class ChipsLayoutManager extends RecyclerView.LayoutManager implements IC
      * @return true if RTL mode enabled in RecyclerView
      */
     public boolean isLayoutRTL() {
+        if (isLayoutRtlSetManual) {
+            return isLayoutRTL;
+        }
         return getLayoutDirection() == ViewCompat.LAYOUT_DIRECTION_RTL;
+    }
+
+    public void setIsLayoutRTL(boolean isRtl) {
+        isLayoutRtlSetManual = true;
+        isLayoutRTL = isRtl;
     }
 
     @Override
